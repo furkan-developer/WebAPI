@@ -9,9 +9,11 @@ namespace Onion.WebAPI.Controllers
     public class ProjectsController : ControllerBase
     {
         private readonly List<Project> projects;
+        private readonly ILogger<ProjectsController> logger;
 
-        public ProjectsController()
+        public ProjectsController(ILogger<ProjectsController> logger)
         {
+            this.logger = logger;
             projects = new List<Project>
             {
                 new Project { Id = Guid.NewGuid(), Name = "project 1"},
@@ -22,7 +24,18 @@ namespace Onion.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return  Ok(projects);
+            try
+            {
+                logger.LogInformation("Projects.Get() has been run");
+                return Ok(projects);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("Project.Get() has been crashed!"+ex.Message);
+                return BadRequest(ex.Message);
+
+                throw;
+            }
         }
     }
 }
