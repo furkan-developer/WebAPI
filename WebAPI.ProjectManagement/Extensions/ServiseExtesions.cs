@@ -1,4 +1,7 @@
-﻿namespace WebAPI.ProjectManagement.Extensions
+﻿using Onion.Contrants;
+using Onion.LoggerService;
+
+namespace WebAPI.ProjectManagement.Extensions
 {
     public static class ServiseExtesions
     {
@@ -14,5 +17,9 @@
             });
         }
 
+        public static void ConfigureDependencyInjection(this IServiceCollection services)
+        {
+            services.AddSingleton<ILoggerService, LoggerManager>();
+        }
     }
 }
