@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.WebAPI", "WebAPI.ProjectManagement\Onion.WebAPI.csproj", "{2998BD84-9874-4A1E-86DD-6390168ED500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Entities", "Onion.Entities\Onion.Entities.csproj", "{970A7179-4F40-4B7B-9495-3B624543AACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Entities", "Onion.Entities\Onion.Entities.csproj", "{970A7179-4F40-4B7B-9495-3B624543AACF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Contrants", "Onion.Contrants\Onion.Contrants.csproj", "{2501A592-D23F-4D77-8C8B-50FDB2B99C29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.LoggerService", "Onion.LoggerService\Onion.LoggerService.csproj", "{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{970A7179-4F40-4B7B-9495-3B624543AACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{970A7179-4F40-4B7B-9495-3B624543AACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{970A7179-4F40-4B7B-9495-3B624543AACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2501A592-D23F-4D77-8C8B-50FDB2B99C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2501A592-D23F-4D77-8C8B-50FDB2B99C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2501A592-D23F-4D77-8C8B-50FDB2B99C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2501A592-D23F-4D77-8C8B-50FDB2B99C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

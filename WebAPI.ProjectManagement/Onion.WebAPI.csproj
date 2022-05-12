@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Onion.Contrants\Onion.Contrants.csproj" />
     <ProjectReference Include="..\Onion.Entities\Onion.Entities.csproj" />
+    <ProjectReference Include="..\Onion.LoggerService\Onion.LoggerService.csproj" />
   </ItemGroup>
 
 </Project>
