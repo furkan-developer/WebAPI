@@ -1,5 +1,7 @@
-﻿using Onion.Contrants;
+﻿using Microsoft.EntityFrameworkCore;
+using Onion.Contrants;
 using Onion.LoggerService;
+using Onion.Repository;
 
 namespace WebAPI.ProjectManagement.Extensions
 {
@@ -20,6 +22,15 @@ namespace WebAPI.ProjectManagement.Extensions
         public static void ConfigureDependencyInjection(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerService, LoggerManager>();
+        }
+
+        public static void ConfigureSqlConnection(this IServiceCollection services,IConfiguration configuration)
+        {
+            services.AddDbContext<RepositoryContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("sqlConnection"),
+                    project => project.MigrationsAssembly("Onion.WebAPI"));
+            });
         }
     }
 }

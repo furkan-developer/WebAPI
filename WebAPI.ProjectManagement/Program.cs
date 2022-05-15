@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 //Custom Service Functions
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDependencyInjection();
+builder.Services.ConfigureSqlConnection(builder.Configuration);
 
 var app = builder.Build();
 

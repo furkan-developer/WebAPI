@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
@@ -14,6 +18,7 @@
     <ProjectReference Include="..\Onion.Contrants\Onion.Contrants.csproj" />
     <ProjectReference Include="..\Onion.Entities\Onion.Entities.csproj" />
     <ProjectReference Include="..\Onion.LoggerService\Onion.LoggerService.csproj" />
+    <ProjectReference Include="..\Onion.Repository\Onion.Repository.csproj" />
   </ItemGroup>
 
 </Project>

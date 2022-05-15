@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.WebAPI", "WebAPI.Proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Entities", "Onion.Entities\Onion.Entities.csproj", "{970A7179-4F40-4B7B-9495-3B624543AACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Contrants", "Onion.Contrants\Onion.Contrants.csproj", "{2501A592-D23F-4D77-8C8B-50FDB2B99C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Contrants", "Onion.Contrants\Onion.Contrants.csproj", "{2501A592-D23F-4D77-8C8B-50FDB2B99C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.LoggerService", "Onion.LoggerService\Onion.LoggerService.csproj", "{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.LoggerService", "Onion.LoggerService\Onion.LoggerService.csproj", "{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Repository", "Onion.Repository\Onion.Repository.csproj", "{CF219E66-730D-4517-8627-2376FEAF88F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF219E66-730D-4517-8627-2376FEAF88F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF219E66-730D-4517-8627-2376FEAF88F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF219E66-730D-4517-8627-2376FEAF88F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF219E66-730D-4517-8627-2376FEAF88F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
