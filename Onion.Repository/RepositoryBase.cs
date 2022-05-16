@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Onion.Repository
 {
-    internal class RepositoryBase<T> : IRepositoryBase<T>
-        where T : class
+    public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
+        where TEntity : class
     {
         protected RepositoryContext _repositoryContext;
 
@@ -19,20 +19,20 @@ namespace Onion.Repository
             _repositoryContext = repositoryContext;
         }
 
-        public void Create(T entity) => _repositoryContext.Set<T>().Add(entity);
+        public void Create(TEntity entity) => _repositoryContext.Set<TEntity>().Add(entity);
 
-        public void Delete(T entity) => _repositoryContext.Set<T>().Remove(entity);
+        public void Delete(TEntity entity) => _repositoryContext.Set<TEntity>().Remove(entity);
 
-        public IQueryable<T> FindAll(bool trackChanges) => 
+        public IQueryable<TEntity> FindAll(bool trackChanges) => 
             !trackChanges ?
-            _repositoryContext.Set<T>().AsNoTracking() :
-            _repositoryContext.Set<T>();
+            _repositoryContext.Set<TEntity>().AsNoTracking() :
+            _repositoryContext.Set<TEntity>();
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges) =>
+        public IQueryable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression, bool trackChanges) =>
             !trackChanges ?
-            _repositoryContext.Set<T>().Where(expression).AsNoTracking() :
-            _repositoryContext.Set<T>().Where(expression);
+            _repositoryContext.Set<TEntity>().Where(expression).AsNoTracking() :
+            _repositoryContext.Set<TEntity>().Where(expression);
 
-        public void Update(T entity) => _repositoryContext.Set<T>().Update(entity);
+        public void Update(TEntity entity) => _repositoryContext.Set<TEntity>().Update(entity);
     }
 }

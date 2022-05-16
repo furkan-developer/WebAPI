@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Onion.Contrants
 {
-    public interface IRepositoryBase<T> 
-        where T : class
+    public interface IRepositoryBase<TEntity> 
+        where TEntity : class
     {
         //Lazy Loading kullandığımızdan IQueryable tipinde dönüş olmalıdır.
-        IQueryable<T> FindAll(bool trackChanges);
-        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        IQueryable<TEntity> FindAll(bool trackChanges);
+        IQueryable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression, bool trackChanges);
+        void Create(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }
