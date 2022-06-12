@@ -22,6 +22,7 @@ namespace WebAPI.ProjectManagement.Extensions
         public static void ConfigureDependencyInjection(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerService, LoggerManager>();
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
 
         public static void ConfigureSqlConnection(this IServiceCollection services,IConfiguration configuration)

@@ -9,26 +9,22 @@ namespace Onion.WebAPI.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private readonly List<Project> projects;
+        private readonly IRepositoryManager _rp;
         private readonly ILoggerService loggerService;
 
-        public ProjectsController(ILoggerService loggerService)
+        public ProjectsController(ILoggerService loggerService,IRepositoryManager repositoryManager)
         {
-            this.loggerService = loggerService; //Dependency Injection 
-            projects = new List<Project>
-            {
-                new Project { Id = Guid.NewGuid(), Name = "project 1"},
-                new Project { Id = Guid.NewGuid(), Name = "project 2"}
-            };
+            this.loggerService = loggerService;
+            this._rp = repositoryManager;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             try
             {
                 loggerService.LogInfo("Projects.Get() has been run");
-                return Ok(projects);
+                return Ok(_rp.ProjectRepository.GetAllProjects(false));
             }
             catch (Exception ex)
             {

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Onion.Contrants\Onion.Contrants.csproj" />
+    <ProjectReference Include="..\Onion.Contrants\DataAccess.Contrants.csproj" />
   </ItemGroup>
 
 </Project>

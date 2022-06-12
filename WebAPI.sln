@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.WebAPI", "WebAPI.Proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Entities", "Onion.Entities\Onion.Entities.csproj", "{970A7179-4F40-4B7B-9495-3B624543AACF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Contrants", "Onion.Contrants\Onion.Contrants.csproj", "{2501A592-D23F-4D77-8C8B-50FDB2B99C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.Contrants", "Onion.Contrants\DataAccess.Contrants.csproj", "{2501A592-D23F-4D77-8C8B-50FDB2B99C29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.LoggerService", "Onion.LoggerService\Onion.LoggerService.csproj", "{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.LoggerService", "Onion.LoggerService\DataAccess.LoggerService.csproj", "{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Repository", "Onion.Repository\Onion.Repository.csproj", "{CF219E66-730D-4517-8627-2376FEAF88F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.Repository", "Onion.Repository\DataAccess.Repository.csproj", "{CF219E66-730D-4517-8627-2376FEAF88F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{94B1C512-BE1A-4593-B67B-575B46D13AA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2501A592-D23F-4D77-8C8B-50FDB2B99C29} = {94B1C512-BE1A-4593-B67B-575B46D13AA1}
+		{CF34D4AC-D0CF-443C-8F66-40EBD3EDCCB2} = {94B1C512-BE1A-4593-B67B-575B46D13AA1}
+		{CF219E66-730D-4517-8627-2376FEAF88F0} = {94B1C512-BE1A-4593-B67B-575B46D13AA1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {050C48F1-BA1D-4636-B238-E82F713E26D2}
