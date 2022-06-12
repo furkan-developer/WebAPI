@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Onion.WebAPI.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class CreateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,8 +28,7 @@ namespace Onion.WebAPI.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: true),
@@ -46,6 +45,16 @@ namespace Onion.WebAPI.Migrations
                         principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Projects",
+                columns: new[] { "ProjectId", "Description", "Field", "ImageUrl", "Name" },
+                values: new object[] { new Guid("b67e3d43-23ef-444f-a022-5294810a5428"), "Onion Architecture", "Computer Science", null, "ASP.NET Core Web API Project" });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "EmployeeId", "Age", "FirstName", "LastName", "Position", "ProjectId" },
+                values: new object[] { new Guid("6019da1c-2aaf-4221-a788-10e5dbb7e1da"), null, "Furkan", "AYDIN", null, new Guid("b67e3d43-23ef-444f-a022-5294810a5428") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_ProjectId",

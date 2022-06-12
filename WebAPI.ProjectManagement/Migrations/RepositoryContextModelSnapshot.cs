@@ -24,12 +24,10 @@ namespace Onion.WebAPI.Migrations
 
             modelBuilder.Entity("Onion.Entities.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("EmployeeId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
@@ -54,6 +52,15 @@ namespace Onion.WebAPI.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6019da1c-2aaf-4221-a788-10e5dbb7e1da"),
+                            FirstName = "Furkan",
+                            LastName = "AYDIN",
+                            ProjectId = new Guid("b67e3d43-23ef-444f-a022-5294810a5428")
+                        });
                 });
 
             modelBuilder.Entity("Onion.Entities.Models.Project", b =>
@@ -80,6 +87,15 @@ namespace Onion.WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b67e3d43-23ef-444f-a022-5294810a5428"),
+                            Description = "Onion Architecture",
+                            Field = "Computer Science",
+                            Name = "ASP.NET Core Web API Project"
+                        });
                 });
 
             modelBuilder.Entity("Onion.Entities.Models.Employee", b =>
