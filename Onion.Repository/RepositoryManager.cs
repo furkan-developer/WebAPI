@@ -10,18 +10,18 @@ namespace Onion.Repository
     public class RepositoryManager : IRepositoryManager
     {
         private readonly RepositoryContext rpContext;
-        private readonly IProjectRepository _projectRepository;
-        private readonly IEmployeeReository _employeeReository;
+        private readonly Lazy<IProjectRepository> _projectRepository;
+        private readonly Lazy<IEmployeeReository> _employeeReository;
         public RepositoryManager(RepositoryContext rpContext)
         {
             this.rpContext = rpContext;
-            _projectRepository = new ProjectRepository(rpContext);
-            _employeeReository = new EmployeeRepository(rpContext);
+            _projectRepository = new Lazy<IProjectRepository>(() => new ProjectRepository(rpContext));
+            _employeeReository = new Lazy<IEmployeeReository>(() => new EmployeeRepository(rpContext));
         }
 
-        public IProjectRepository ProjectRepository => _projectRepository;
+        public IProjectRepository ProjectRepository => _projectRepository.Value;
 
-        public IEmployeeReository EmployeeReository => _employeeReository;
+        public IEmployeeReository EmployeeReository => _employeeReository.Value;
 
         public void Save()
         {
