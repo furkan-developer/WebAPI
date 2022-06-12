@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Onion.Business.Contracts;
+using Onion.Business.Repository;
 using Onion.Contrants;
 using Onion.LoggerService;
 using Onion.Repository;
@@ -23,6 +25,7 @@ namespace WebAPI.ProjectManagement.Extensions
         {
             services.AddSingleton<ILoggerService, LoggerManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IServiceManager, ServiceManager>();
         }
 
         public static void ConfigureSqlConnection(this IServiceCollection services,IConfiguration configuration)

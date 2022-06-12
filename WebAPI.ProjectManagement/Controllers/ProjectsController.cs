@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Onion.Business.Contracts;
 using Onion.Contrants;
 using Onion.Entities.Models;
 
@@ -9,30 +10,17 @@ namespace Onion.WebAPI.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private readonly IRepositoryManager _rp;
-        private readonly ILoggerService loggerService;
+        private readonly IServiceManager _serviceManager;
 
-        public ProjectsController(ILoggerService loggerService,IRepositoryManager repositoryManager)
-        {
-            this.loggerService = loggerService;
-            this._rp = repositoryManager;
+        public ProjectsController(IServiceManager serviceManager)
+        {        
+            this._serviceManager = serviceManager;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            try
-            {
-                loggerService.LogInfo("Projects.Get() has been run");
-                return Ok(_rp.ProjectRepository.GetAllProjects(false));
-            }
-            catch (Exception ex)
-            {
-                loggerService.LogError("Project.Get() has been crashed!"+ex.Message);
-                return BadRequest(ex.Message);
-
-                throw;
-            }
+            return Ok(_serviceManager.ProjectService.GetAll(false));            
         }
     }
 }
