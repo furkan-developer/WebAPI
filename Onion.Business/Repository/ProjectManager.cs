@@ -33,5 +33,20 @@ namespace Onion.Business.Repository
                 throw;
             }
         }
+
+        public Project GetOneProjectByProjectId(Guid id, bool trackChange)
+        {
+            try
+            {
+                var project = _repositoryManager.ProjectRepository.GetOneProjectByProjectId(id, trackChange);
+                return project;
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError("ProjectManager.GetOneProjectByProjectId() has an error: "
+                    + ex.Message);
+                throw;
+            }
+        }
     }
 }

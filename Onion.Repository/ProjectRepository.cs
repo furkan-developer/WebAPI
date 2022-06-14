@@ -26,7 +26,7 @@ namespace Onion.Repository
             .ToList();
 
 
-        public Project GetProject(Guid id, bool trackChanges) =>
+        public Project GetOneProjectByProjectId(Guid id, bool trackChanges) =>
             FindByCondition(p => p.Id.Equals(id), trackChanges)
             .SingleOrDefault();
 

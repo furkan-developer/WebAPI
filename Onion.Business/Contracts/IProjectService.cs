@@ -10,5 +10,6 @@ namespace Onion.Business.Contracts
     public interface IProjectService
     {
         IEnumerable<Project> GetAll(bool trackChange);
+        Project GetOneProjectByProjectId(Guid id, bool trackChange);
     }
 }

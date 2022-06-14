@@ -14,7 +14,7 @@ namespace Onion.Contrants
         //bu repodan çıkan veri proje tarafından istenen veri yani veri tabanı işleri
         //bitmiş veri olacağından IQueryable bir veri değildir.
         IEnumerable<Project> GetAllProjects(bool trackChanges);
-        Project GetProject(Guid id, bool trackChanges);
+        Project GetOneProjectByProjectId(Guid id, bool trackChanges);
 
         void CreateProject(Project project);
         void DeleteProject(Project project);

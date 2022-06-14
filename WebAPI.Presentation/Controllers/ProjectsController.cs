@@ -17,12 +17,26 @@ namespace WebAPI.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAllProject()
         {
             try
             {
                 var projects = _serviceManager.ProjectService.GetAll(false);
                 return Ok(projects);  
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error!");
+            }
+        }
+
+        [HttpGet("{id:guid}")]
+        public IActionResult GetOneProjectById(Guid id)
+        {
+            try
+            {
+                var project = _serviceManager.ProjectService.GetOneProjectByProjectId(id,false);
+                return Ok(project);
             }
             catch (Exception ex)
             {
