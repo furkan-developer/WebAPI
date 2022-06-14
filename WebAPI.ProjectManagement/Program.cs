@@ -7,7 +7,7 @@ LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nl
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -16,6 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDependencyInjection();
 builder.Services.ConfigureSqlConnection(builder.Configuration);
+
+builder.Services.AddControllers().AddApplicationPart(typeof(WebAPI.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
 
