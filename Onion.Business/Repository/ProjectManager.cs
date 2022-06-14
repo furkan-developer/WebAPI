@@ -22,15 +22,15 @@ namespace Onion.Business.Repository
 
         public IEnumerable<Project> GetAll(bool trackChange)
         {
-            if (true)
+            try
             {
-                _loggerService.LogInfo("Data import completed successfully");
-                return _repositoryManager.ProjectRepository.GetAllProjects(trackChange);
+                var result = _repositoryManager.ProjectRepository.GetAllProjects(false);
+                return result;
             }
-            else
+            catch (Exception ex)
             {
-                _loggerService.LogError("Data import unsuccessful");
-                return null;
+                _loggerService.LogError("ProjectManager.GetAll() has an error: " + ex.Message);
+                throw;
             }
         }
     }

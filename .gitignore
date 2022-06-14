@@ -398,4 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 #Project specific condition
-./WebAPI.ProjectManagement/internal_logs/internallog.txt
+*.txt
