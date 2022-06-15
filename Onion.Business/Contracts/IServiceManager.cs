@@ -9,6 +9,6 @@ namespace Onion.Business.Contracts
     public interface IServiceManager
     {
         IProjectService ProjectService { get; }
-
+        IEmployeeService EmployeeService { get; }
     }
 }
