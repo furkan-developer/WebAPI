@@ -1,4 +1,5 @@
 ﻿using Onion.Entities.Models;
+using Onion.Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Onion.Business.Contracts
 {
     public interface IProjectService
     {
-        IEnumerable<Project> GetAll(bool trackChange);
-        Project GetOneProjectByProjectId(Guid id, bool trackChange);
+        IEnumerable<ProjectDto> GetAll(bool trackChange);
+        ProjectDto GetOneProjectByProjectId(Guid id, bool trackChange);
     }
 }

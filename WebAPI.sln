@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Business", "Onion.Business\Onion.Business.csproj", "{F0089F66-6E86-40E0-BD68-37CE7DE3B57C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI.Presentation", "WebAPI.Presentation\WebAPI.Presentation.csproj", "{E48EFA40-A55B-4943-ADFF-B33FA3C6CE9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI.Presentation", "WebAPI.Presentation\WebAPI.Presentation.csproj", "{E48EFA40-A55B-4943-ADFF-B33FA3C6CE9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Shared", "Onion.Shared\Onion.Shared.csproj", "{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{E48EFA40-A55B-4943-ADFF-B33FA3C6CE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E48EFA40-A55B-4943-ADFF-B33FA3C6CE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E48EFA40-A55B-4943-ADFF-B33FA3C6CE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

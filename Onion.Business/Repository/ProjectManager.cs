@@ -1,6 +1,7 @@
 ﻿using Onion.Business.Contracts;
 using Onion.Contrants;
 using Onion.Entities.Models;
+using Onion.Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,15 @@ namespace Onion.Business.Repository
             this._loggerService = loggerService;
         }
 
-        public IEnumerable<Project> GetAll(bool trackChange)
+        public IEnumerable<ProjectDto> GetAll(bool trackChange)
         {
             try
             {
                 var result = _repositoryManager.ProjectRepository.GetAllProjects(false);
-                return result;
+                return result.Select(pro => new ProjectDto(
+                    pro.Id, pro.Name,
+                    pro.Description,
+                    pro.Field));
             }
             catch (Exception ex)
             {
@@ -34,12 +38,16 @@ namespace Onion.Business.Repository
             }
         }
 
-        public Project GetOneProjectByProjectId(Guid id, bool trackChange)
+        public ProjectDto GetOneProjectByProjectId(Guid id, bool trackChange)
         {
             try
             {
                 var project = _repositoryManager.ProjectRepository.GetOneProjectByProjectId(id, trackChange);
-                return project;
+                return new ProjectDto(
+                    project.Id, 
+                    project.Name, 
+                    project.Description, 
+                    project.Field);    
             }
             catch (Exception ex)
             {
