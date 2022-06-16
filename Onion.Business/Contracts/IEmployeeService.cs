@@ -1,10 +1,11 @@
 ﻿using Onion.Entities.Models;
+using Onion.Shared.DataTransferObject;
 
 namespace Onion.Business.Contracts
 {
     public interface IEmployeeService
     {
-        IEnumerable<Employee> GetAllEmployeesByProjectId(Guid projectId,bool trackChange);
-        Employee GetOneEmployeeByProjectId(Guid projectId,Guid employeeId, bool trackChange);
+        IEnumerable<EmployeeDto> GetAllEmployeesByProjectId(Guid projectId,bool trackChange);
+        EmployeeDto GetOneEmployeeByProjectId(Guid projectId,Guid employeeId, bool trackChange);
     }
 }
