@@ -1,4 +1,5 @@
-﻿using Onion.Business.Contracts;
+﻿using AutoMapper;
+using Onion.Business.Contracts;
 using Onion.Contrants;
 using Onion.Entities.Models;
 using Onion.Shared.DataTransferObject;
@@ -9,11 +10,14 @@ namespace Onion.Business.Repository
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerService _loggerService;
+        private readonly IMapper _mapper;
 
-        public EmployeeManager(IRepositoryManager repositoryManager, ILoggerService loggerService)
+        public EmployeeManager(IRepositoryManager repositoryManager
+            , ILoggerService loggerService,IMapper mapper)
         {
             _repositoryManager = repositoryManager;
             _loggerService = loggerService;
+            _mapper = mapper;
         }
 
         public IEnumerable<EmployeeDto> GetAllEmployeesByProjectId(Guid projectId, bool trackChange)
@@ -23,8 +27,8 @@ namespace Onion.Business.Repository
                 var result = _repositoryManager
                     .EmployeeReository
                     .GetEmployeesByProjectId(projectId, trackChange);
-                return result.Select(emp => 
-                    new EmployeeDto(emp.Id, emp.FirstName, emp.LastName, emp.Age, emp.Position));
+                var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(result);
+                return employeesDto;
             }
             catch (Exception ex)
             {
@@ -41,8 +45,7 @@ namespace Onion.Business.Repository
                 var result = _repositoryManager
                     .EmployeeReository
                     .GetEmployeeByProjectId(projectId, employeeId, trackChange);
-                return new EmployeeDto(
-                    result.Id, result.FirstName, result.LastName, result.Age,result.Position);
+                return _mapper.Map<EmployeeDto>(result);
             }
             catch (Exception ex)
             {

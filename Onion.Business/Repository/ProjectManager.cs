@@ -1,4 +1,5 @@
-﻿using Onion.Business.Contracts;
+﻿using AutoMapper;
+using Onion.Business.Contracts;
 using Onion.Contrants;
 using Onion.Entities.Models;
 using Onion.Shared.DataTransferObject;
@@ -14,11 +15,13 @@ namespace Onion.Business.Repository
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerService _loggerService;
+        private readonly IMapper _mapper;
 
-        public ProjectManager(IRepositoryManager projectRepository, ILoggerService loggerService)
+        public ProjectManager(IRepositoryManager projectRepository, ILoggerService loggerService,IMapper mapper)
         {
             this._repositoryManager = projectRepository;
             this._loggerService = loggerService;
+            this._mapper = mapper;
         }
 
         public IEnumerable<ProjectDto> GetAll(bool trackChange)
@@ -26,10 +29,7 @@ namespace Onion.Business.Repository
             try
             {
                 var result = _repositoryManager.ProjectRepository.GetAllProjects(false);
-                return result.Select(pro => new ProjectDto(
-                    pro.Id, pro.Name,
-                    pro.Description,
-                    pro.Field));
+                return result.Select(pro => _mapper.Map<ProjectDto>(pro));
             }
             catch (Exception ex)
             {
@@ -43,11 +43,7 @@ namespace Onion.Business.Repository
             try
             {
                 var project = _repositoryManager.ProjectRepository.GetOneProjectByProjectId(id, trackChange);
-                return new ProjectDto(
-                    project.Id, 
-                    project.Name, 
-                    project.Description, 
-                    project.Field);    
+                return _mapper.Map<ProjectDto>(project); 
             }
             catch (Exception ex)
             {
