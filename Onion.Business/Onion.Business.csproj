@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Onion.Contrants\DataAccess.Contrants.csproj" />
     <ProjectReference Include="..\Onion.Entities\Onion.Entities.csproj" />
     <ProjectReference Include="..\Onion.LoggerService\DataAccess.LoggerService.csproj" />

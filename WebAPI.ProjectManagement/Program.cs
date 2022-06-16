@@ -18,6 +18,7 @@ builder.Services.ConfigureDependencyInjection();
 builder.Services.ConfigureSqlConnection(builder.Configuration);
 
 builder.Services.AddControllers().AddApplicationPart(typeof(WebAPI.Presentation.AssemblyReference).Assembly);
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

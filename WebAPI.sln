@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Business", "Onion.Bus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI.Presentation", "WebAPI.Presentation\WebAPI.Presentation.csproj", "{E48EFA40-A55B-4943-ADFF-B33FA3C6CE9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Shared", "Onion.Shared\Onion.Shared.csproj", "{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Shared", "Onion.Shared\Onion.Shared.csproj", "{9C3662E4-6BA6-4C58-B80A-D3D2317DF2B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
