@@ -26,7 +26,6 @@ namespace WebAPI.Presentation.Controllers
         [HttpGet("{id:guid}")]
         public IActionResult GetOneProjectById(Guid id)
         {
-            throw new Exception("dfdf");
             var project = _serviceManager.ProjectService.GetOneProjectByProjectId(id, false);
             return Ok(project);
         }

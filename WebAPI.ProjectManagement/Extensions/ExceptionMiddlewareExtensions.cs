@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Onion.Contrants;
 using Onion.Entities.ErrorModels;
+using Onion.Entities.Exceptions;
 using System.Net;
 
 namespace Onion.WebAPI.Extensions
@@ -14,18 +15,20 @@ namespace Onion.WebAPI.Extensions
             {
                 appError.Run(async context =>
                 {
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     context.Response.ContentType = "application/json";
 
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                     if (contextFeature != null)
                     {
-                        logger.LogError("There is a problem : " + contextFeature.Error);
-
+                        context.Response.StatusCode = contextFeature.Error switch
+                        {
+                            NotFoundException => StatusCodes.Status404NotFound,
+                            _ => StatusCodes.Status500InternalServerError
+                        };
                         await context.Response.WriteAsync(new ErrorDetails
                         {
                             StatusCode = context.Response.StatusCode,
-                            Message = "Internal Server Error"
+                            Message = contextFeature.Error.Message,
                         }.ToString());
                     }
                 });

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Onion.Business.Contracts;
 using Onion.Contrants;
+using Onion.Entities.Exceptions;
 using Onion.Entities.Models;
 using Onion.Shared.DataTransferObject;
 using System;
@@ -31,9 +32,10 @@ namespace Onion.Business.Repository
         }
 
         public ProjectDto GetOneProjectByProjectId(Guid id, bool trackChange)
-        {
-           
+        {           
             var project = _repositoryManager.ProjectRepository.GetOneProjectByProjectId(id, trackChange);
+            if(project is null)
+                throw new ProjectNotFoundException(id);
             return _mapper.Map<ProjectDto>(project);
         }
     }
