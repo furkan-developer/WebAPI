@@ -1,4 +1,6 @@
 using NLog;
+using Onion.Contrants;
+using Onion.WebAPI.Extensions;
 using WebAPI.ProjectManagement.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,14 @@ builder.Services.AddControllers().AddApplicationPart(typeof(WebAPI.Presentation.
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
+
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
+
+if (app.Environment.IsProduction())
+{
+    app.UseHsts();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

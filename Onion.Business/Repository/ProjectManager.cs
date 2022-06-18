@@ -17,7 +17,7 @@ namespace Onion.Business.Repository
         private readonly ILoggerService _loggerService;
         private readonly IMapper _mapper;
 
-        public ProjectManager(IRepositoryManager projectRepository, ILoggerService loggerService,IMapper mapper)
+        public ProjectManager(IRepositoryManager projectRepository, ILoggerService loggerService, IMapper mapper)
         {
             this._repositoryManager = projectRepository;
             this._loggerService = loggerService;
@@ -26,31 +26,15 @@ namespace Onion.Business.Repository
 
         public IEnumerable<ProjectDto> GetAll(bool trackChange)
         {
-            try
-            {
-                var result = _repositoryManager.ProjectRepository.GetAllProjects(false);
-                return result.Select(pro => _mapper.Map<ProjectDto>(pro));
-            }
-            catch (Exception ex)
-            {
-                _loggerService.LogError("ProjectManager.GetAll() has an error: " + ex.Message);
-                throw;
-            }
+            var result = _repositoryManager.ProjectRepository.GetAllProjects(false);
+            return result.Select(pro => _mapper.Map<ProjectDto>(pro));
         }
 
         public ProjectDto GetOneProjectByProjectId(Guid id, bool trackChange)
         {
-            try
-            {
-                var project = _repositoryManager.ProjectRepository.GetOneProjectByProjectId(id, trackChange);
-                return _mapper.Map<ProjectDto>(project); 
-            }
-            catch (Exception ex)
-            {
-                _loggerService.LogError("ProjectManager.GetOneProjectByProjectId() has an error: "
-                    + ex.Message);
-                throw;
-            }
+           
+            var project = _repositoryManager.ProjectRepository.GetOneProjectByProjectId(id, trackChange);
+            return _mapper.Map<ProjectDto>(project);
         }
     }
 }

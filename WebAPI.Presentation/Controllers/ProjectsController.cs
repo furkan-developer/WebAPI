@@ -7,7 +7,7 @@ namespace WebAPI.Presentation.Controllers
 {
     [ApiController]
     [Route("api/projects")]
-    public class ProjectsController:ControllerBase
+    public class ProjectsController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
 
@@ -19,29 +19,16 @@ namespace WebAPI.Presentation.Controllers
         [HttpGet]
         public IActionResult GetAllProject()
         {
-            try
-            {
-                var projects = _serviceManager.ProjectService.GetAll(false);
-                return Ok(projects);  
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal Server Error!");
-            }
+            var projects = _serviceManager.ProjectService.GetAll(false);
+            return Ok(projects);
         }
-
+        
         [HttpGet("{id:guid}")]
         public IActionResult GetOneProjectById(Guid id)
         {
-            try
-            {
-                var project = _serviceManager.ProjectService.GetOneProjectByProjectId(id,false);
-                return Ok(project);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal Server Error!");
-            }
+            throw new Exception("dfdf");
+            var project = _serviceManager.ProjectService.GetOneProjectByProjectId(id, false);
+            return Ok(project);
         }
     }
-}
+} 
