@@ -2,7 +2,8 @@
 {
     public class EmployeeNotFoundException : NotFoundException
     {
+        public EmployeeNotFoundException():base("There isn't employee this on the project") { }
         public EmployeeNotFoundException(Guid employeId)
-            :base($"The project with {employeId} doesn't exists.") { }
+            :base($"The employee with {employeId} doesn't exists.") { }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Onion.Business.Contracts;
 using Onion.Contrants;
+using Onion.Entities.Exceptions;
 using Onion.Entities.Models;
 using Onion.Shared.DataTransferObject;
 
@@ -13,7 +14,7 @@ namespace Onion.Business.Repository
         private readonly IMapper _mapper;
 
         public EmployeeManager(IRepositoryManager repositoryManager
-            , ILoggerService loggerService,IMapper mapper)
+            , ILoggerService loggerService, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
             _loggerService = loggerService;
@@ -22,37 +23,40 @@ namespace Onion.Business.Repository
 
         public IEnumerable<EmployeeDto> GetAllEmployeesByProjectId(Guid projectId, bool trackChange)
         {
-            try
-            {
-                var result = _repositoryManager
-                    .EmployeeReository
-                    .GetEmployeesByProjectId(projectId, trackChange);
-                var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(result);
-                return employeesDto;
-            }
-            catch (Exception ex)
-            {
-                _loggerService.LogError("EmployeeManager.GetAllEmployeesByProjectId() has an error: "
-                    + ex.Message);
-                throw;
-            }
+            CheckProjectExist(projectId);
+
+            var result = _repositoryManager
+               .EmployeeReository
+               .GetEmployeesByProjectId(projectId, trackChange);
+            if (result is null)
+                throw new EmployeeNotFoundException();
+
+            var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(result);
+            return employeesDto;
         }
 
         public EmployeeDto GetOneEmployeeByProjectId(Guid projectId, Guid employeeId, bool trackChange)
         {
-            try
-            {
-                var result = _repositoryManager
-                    .EmployeeReository
-                    .GetEmployeeByProjectId(projectId, employeeId, trackChange);
-                return _mapper.Map<EmployeeDto>(result);
-            }
-            catch (Exception ex)
-            {
-                _loggerService.LogError("EmployeeManager.GetOneEmployeeByProjectId() has an error: "
-                    + ex.Message);
-                throw;
-            }
+            CheckProjectExist(projectId);
+
+            var result = _repositoryManager
+                .EmployeeReository
+                .GetEmployeeByProjectId(projectId, employeeId, trackChange);
+            if(result is null)
+              throw new EmployeeNotFoundException(employeeId);
+
+            return _mapper.Map<EmployeeDto>(result);
         }
+
+        #region Check
+        public void CheckProjectExist(Guid projectId)
+        {
+            var project = _repositoryManager
+                .ProjectRepository
+                .GetOneProjectByProjectId(projectId, trackChanges: false);
+            if (project is null)
+                throw new ProjectNotFoundException(projectId);
+        }
+        #endregion
     }
 }

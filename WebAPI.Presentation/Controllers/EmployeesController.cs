@@ -10,7 +10,7 @@ namespace WebAPI.Presentation.Controllers
 {
     [ApiController]
     [Route("api/projects/{projectId}/employees")]
-    public class EmployeesController:ControllerBase
+    public class EmployeesController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
 
@@ -22,33 +22,19 @@ namespace WebAPI.Presentation.Controllers
         [HttpGet]
         public IActionResult GetAllEmployeesByProjectId(Guid projectId)
         {
-            try
-            {
-                var result = _serviceManager
-                    .EmployeeService
-                    .GetAllEmployeesByProjectId(projectId, false);
-                return Ok(result);
-            }
-            catch
-            {
-                return StatusCode(500, "Internal Server Error!");                
-            }
+            var result = _serviceManager
+                .EmployeeService
+                .GetAllEmployeesByProjectId(projectId, false);
+            return Ok(result);
         }
 
         [HttpGet("{id:guid}")]
-        public IActionResult GetOneEmployeeByProjectId(Guid projectId,Guid id)
+        public IActionResult GetOneEmployeeByProjectId(Guid projectId, Guid id)
         {
-            try
-            {
-                var result = _serviceManager
-                    .EmployeeService
-                    .GetOneEmployeeByProjectId(projectId, id, false);
-                return Ok(result);
-            }
-            catch
-            {
-                return StatusCode(500, "Internal Server Error!");
-            }
+            var result = _serviceManager
+                .EmployeeService
+                .GetOneEmployeeByProjectId(projectId, id, false);
+            return Ok(result);
         }
     }
 }
